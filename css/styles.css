@@ -175,9 +175,14 @@ customized css
   height: 30%;
 }
 
-.about-me2 {
-  width: 100%;
-  height: 100%;
+.j-zhu {
+  background-size:cover;
+  background-image: url(../images/j-zhu.jpg);
+}
+
+.about-me {
+  background-size:cover;
+  background-image: url(../images/about-me2.png);
 }
 
 .arrow {
