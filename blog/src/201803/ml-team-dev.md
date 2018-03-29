@@ -6,7 +6,7 @@ Jupyter Notebookを使うのが前提条件にしていますので、Jupyter No
 
 ## 統合開発環境（IDE）を構築する（Dockerの導入）
 
-<img src="https://github.com/george-j-zhu/george-j-zhu.github.io/tree/master/blog/resources/201803/ml-team-dev_01.png" alt="" width="217" height="199" class="alignnone size-full wp-image-20734" />
+<img src="https://github.com/george-j-zhu/george-j-zhu.github.io/tree/master/blog/resources/201803/ml-team-dev_01.png?raw=true" alt="" width="217" height="199" class="alignnone size-full wp-image-20734" />
 
 Dockerはコンテナ型の仮想化環境を提供するオープンソースソフトウェアです。インスタンス（コンテナ）の起動が早く、動作がVMより軽いのが特徴です。コンテナ内の性能がローカル環境の性能とほぼ同じです。
 DockerのEnterprise版もありますが、今回は機能的には十分のCommunity版を使います。
@@ -67,7 +67,7 @@ Jupyter Notebookのバージョン管理の問題点を改善するため、ソ�
 
 Jupyter NotebookからModel（M）、View（V）とController（C）を分離しますが、ソースを分離すると、折角Jupyter Notebookにセルがあり、処理フローを記述できる素晴らしい機能があるのに使えなくなりますので、 処理フローのみをJupyter Notebookに残します。ユーザインタフェース（View）が存在しないので、Jupyter NotebookがView（V）であり、処理フローを制御するためのController（C）でもあります。下図のように、model_module.pyがModelを担当します。
 
-<img src="https://github.com/george-j-zhu/george-j-zhu.github.io/tree/master/blog/resources/201803/ml-team-dev_02.png" alt="" width="900" height="400" class="alignnone size-medium wp-image-20736" />
+<img src="https://github.com/george-j-zhu/george-j-zhu.github.io/blob/master/blog/resources/201803/ml-team-dev_02.png?raw=true" alt="" width="900" height="400" class="alignnone size-medium wp-image-20736" />
 
 また、機械学習フロー上、前処理と学習アルゴリズムの呼び出し、交差検証等様々な処理がありますが、機械学習のプロジェックは基本PDCAのサイクルを回しながらやって行きますので、PDCAの仮説検証のため前処理が一番変更される部分と思います。前処理をmodel_moduleに関数化し、学習アルゴリズムの呼び出し、交差検証等PDCAサイクルに影響されない部分をモジュール化し、完全にJupyter Notebookから分離します。
 こうすることで、Jupyter Notebook自体がほぼソースコードを持たず、検証結果の表示と処理フローの記載のみを担当することになります。これらは履歴比較対象ではありませんので、チーム開発でVCS（git等）使う場合はJupyter Notebookの履歴比較（JSONの比較）が必要なくなります。処理フローに対応するソースがPythonファイルにあるので、比較もしやすいです。
