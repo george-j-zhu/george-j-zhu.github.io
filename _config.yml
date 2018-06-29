@@ -1,2 +1,9 @@
 plugins:
   - jekyll-seo-tag
+
+title: Jiajun Zhu | Software Developer, Data Scientist
+description: Software Developer and Data Scientist based in Tokyo, Japan
+social:
+  name: Jiajun ZHU
+  links:
+    - https://www.linkedin.com/in/george-j-zhu/
